@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert and DOM Update</title>
+    <style>
+        #demo {
+            font-size: 70px; /* Adjust the font size as needed */
+           
+        }
+
+        .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust height as needed */
+
+    .error {
+    color: red;
+  }
+}
+
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+    <div id="demo">JavaScript Alert</div>
+    <button onclick="showAlertAndUpdateDOM()"  style="font-size: 40px; padding: 10px; justify-content: center; align-items: center;">Hire Me</button>
+
+    <!-- Include the JavaScript file -->
+    <script src="script.js"></script> 
+</div>
+<br>
+<br>
+<hr>
+<br>
+<br>
+<br>
+    <div class="container">
+    <h2>Basic Form with Client-side Validation</h2>
+
+<form id="myForm" action="#" method="post" onsubmit="return validateForm()">
+  <div>
+    <label for="name" style="font-size: 40px;">Name:</label>
+    <input type="text" style="padding: 10px;" id="name" name="name" required>
+    <span id="nameError" class="error"></span>
+  </div>
+  <div>
+    <label for="email" style="font-size: 40px;">Email:</label>
+    <input type="email" style="padding: 10px;" id="email" name="email" required>
+    <span id="emailError" class="error"></span>
+  </div>
+  
+  <div>
+    <input type="submit" style="padding: 10px; text-align: center; font-size: 30px; text-emphasis-color: green;" value="Submit">
+  </div>
+</div>
+</form>
+
+<script>
+  function validateForm() {
+    let isValid = true;
+
+    // Validate name
+    const nameInput = document.getElementById('name');
+    const nameError = document.getElementById('nameError');
+    if (nameInput.value.trim() === '') {
+      nameError.innerText = 'Name is required';
+      isValid = false;
+    } else {
+      nameError.innerText = '';
+    }
+
+    // Validate email
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('emailError');
+    if (emailInput.value.trim() === '') {
+      emailError.innerText = 'Email is required';
+      isValid = false;
+    } else if (!isValidEmail(emailInput.value.trim())) {
+      emailError.innerText = 'Invalid email format';
+      isValid = false;
+    } else {
+      emailError.innerText = '';
+    }
+
+    // Validate password
+    const passwordInput = document.getElementById('password');
+    const passwordError = document.getElementById('passwordError');
+    if (passwordInput.value.trim() === '') {
+      passwordError.innerText = 'Password is required';
+      isValid = false;
+    } else {
+      passwordError.innerText = '';
+    }
+
+    return isValid;
+  }
+
+  // Function to validate email format
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+</script>
+
+</body>
+</html>
